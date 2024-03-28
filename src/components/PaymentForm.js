@@ -9,77 +9,75 @@ import CryptoWallet from "./form/CryptoWallet";
 import ExpirationDate from "./form/ExpirationDate";
 import TextArea from "./form/TextArea";
 
-export default function PaymentForm({ 
-  paymentMethod,
-  toggleComplete
-}) {
-    const [name, setName] = useState("");
-    const [creditCardNumber, setCreditCardNumber] = useState("");
-    const [expirationDate, setExpirationDate] = useState("");
-    const [cvv, setCvv] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [cryptoAddress, setCryptoAddress] = useState("");
-    const [description, setDescription] = useState("");
+export default function PaymentForm({ paymentMethod, toggleComplete }) {
+  const [name, setName] = useState("");
+  const [creditCardNumber, setCreditCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cryptoAddress, setCryptoAddress] = useState("");
+  const [description, setDescription] = useState("");
 
-    const fields = paymentPlugins[paymentMethod].fields;
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = {};
-        if (name) formData.name = name;
-        if (creditCardNumber) formData.creditCardNumber = creditCardNumber;
-        if (expirationDate) formData.expirationDate = expirationDate;
-        if (cvv) formData.cvv = cvv;
-        if (email) formData.email = email;
-        if (password) formData.password = password;
-        if (cryptoAddress) formData.cryptoAddress = cryptoAddress;
-        if (description) formData.description = description;
+  const fields = paymentPlugins[paymentMethod].fields;
 
-        try{
-          const response = await fetch(paymentPlugins[paymentMethod].apiUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-          });
-          if (response.ok) {
-            console.log('Payment request successful:', response.statusText);
-          } else {
-            console.error('Payment request failed:', response.statusText);
-          }
-        } catch (error) {
-          console.error('Payment request failed:', error);
-        }
-        // since this is a mock payment we will always consider successful
-        clearAllFields();
-        toggleComplete();
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const clearAllFields = () => {
-        setName("");
-        setCreditCardNumber("");
-        setExpirationDate("");
-        setCvv("");
-        setEmail("");
-        setPassword("");
-        setCryptoAddress("");
-        setDescription("");
-    };
+    const formData = {};
+    if (name) formData.name = name;
+    if (creditCardNumber) formData.creditCardNumber = creditCardNumber;
+    if (expirationDate) formData.expirationDate = expirationDate;
+    if (cvv) formData.cvv = cvv;
+    if (email) formData.email = email;
+    if (password) formData.password = password;
+    if (cryptoAddress) formData.cryptoAddress = cryptoAddress;
+    if (description) formData.description = description;
 
-    useEffect(() => {
-        clearAllFields();
-    }, [paymentMethod]);
+    try {
+      const response = await fetch(paymentPlugins[paymentMethod].apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("Payment request successful:", response.statusText);
+      } else {
+        console.error("Payment request failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Payment request failed:", error);
+    }
+    // since this is a mock payment we will always consider successful
+    clearAllFields();
+    toggleComplete();
+  };
+
+  const clearAllFields = () => {
+    setName("");
+    setCreditCardNumber("");
+    setExpirationDate("");
+    setCvv("");
+    setEmail("");
+    setPassword("");
+    setCryptoAddress("");
+    setDescription("");
+  };
+
+  useEffect(() => {
+    clearAllFields();
+  }, [paymentMethod]);
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="container rounded shadow bg-white mx-auto mt-2 p-12 min-h-120">
-        <div className="flex flex-wrap justify-between w-3/5">
+      <div className="container rounded bg-white p-8 md:p-12 mx-auto mt-2 min-h-120 shadow">
+        <div className="flex flex-wrap justify-between md:w-3/5 w-full">
           <div className="my-2">
             <h2 className="text-2xl font-semibold my-1">Payment Form</h2>
             <p className="text-gray-600">
-              Please enter your payment details below
+              Please enter your payment details below.
             </p>
           </div>
           {fields.name && (
@@ -87,6 +85,7 @@ export default function PaymentForm({
               fieldDetails={fields.name}
               value={name}
               handleOnChange={setName}
+              name="name"
             />
           )}
           {fields.creditCardNumber && (
@@ -129,6 +128,7 @@ export default function PaymentForm({
               fieldDetails={fields.cryptoAddress}
               value={cryptoAddress}
               handleOnChange={setCryptoAddress}
+              name="cryptoAddress"
             />
           )}
           {fields.description && (
@@ -136,6 +136,7 @@ export default function PaymentForm({
               fieldDetails={fields.description}
               value={description}
               handleOnChange={setDescription}
+              name="description"
             />
           )}
         </div>
