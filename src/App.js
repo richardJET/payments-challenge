@@ -10,22 +10,24 @@ function App() {
   const changePaymentMethod = (method) => setPaymentMethod(method);
   const toggleComplete = () => setPaymentComplete(!paymentComplete);
 
-  return (
-    <main className="bg-gray-200 p-8 min-h-screen h-full">
-      {paymentComplete ? (
+  if (paymentComplete) {
+    return (
+      <main className="bg-gray-200 min-h-screen h-full p-4 md:p-8">
         <ConfirmationPage toggleComplete={toggleComplete} />
-      ) : (
-        <>
-          <PaymentMethodsSelect
-            paymentMethod={paymentMethod}
-            changePaymentMethod={changePaymentMethod}
-          />
-          <PaymentForm
-            paymentMethod={paymentMethod}
-            toggleComplete={toggleComplete}
-          />
-        </>
-      )}
+      </main>
+    );
+  }
+
+  return (
+    <main className="bg-gray-200 min-h-screen h-full p-4 md:p-8">
+      <PaymentMethodsSelect
+        paymentMethod={paymentMethod}
+        changePaymentMethod={changePaymentMethod}
+      />
+      <PaymentForm
+        paymentMethod={paymentMethod}
+        toggleComplete={toggleComplete}
+      />
     </main>
   );
 }

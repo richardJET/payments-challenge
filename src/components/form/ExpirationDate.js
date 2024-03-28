@@ -3,19 +3,21 @@ export default function ExpirationDate({
   value,
   handleOnChange,
 }) {
-
-
   return (
     <div className="flex flex-col w-1/2 pe-2 my-2">
-      <label className="my-1">{fieldDetails.label}</label>
+      <label htmlFor="expirationDate" className="my-2">
+        {fieldDetails.label}
+      </label>
       <input
         type="text"
         value={value}
+        name="expirationDate"
+        required
         inputMode="numeric"
         placeholder="MM/YY"
+        minLength={4}
         maxLength={5}
-        required
-        onChange={e => handleOnChange(e.target.value)}
+        onChange={(e) => handleOnChange(e.target.value)}
         className="border rounded w-full py-2 ps-2"
       />
     </div>
