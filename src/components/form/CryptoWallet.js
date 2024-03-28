@@ -8,7 +8,7 @@ export default function CryptoWallet({ fieldDetails, value, handleOnChange }) {
           type="text"
           value={value}
           required={required}
-          placeholder="0x"
+          maxLength={90}
           onChange={(e) => handleOnChange(e.target.value)}
           className="border rounded w-full py-2 ps-2"
         />

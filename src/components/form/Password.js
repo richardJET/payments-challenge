@@ -4,8 +4,8 @@ export default function Password({ fieldDetails, value, handleOnChange }) {
       <label className="my-1">{fieldDetails.label}</label>
       <input
         type="password"
-        required
         value={value}
+        required
         onChange={(e) => handleOnChange(e.target.value)}
         className="border rounded w-full py-2 ps-2"
       />
