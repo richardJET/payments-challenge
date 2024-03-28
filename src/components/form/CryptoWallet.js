@@ -15,7 +15,6 @@ export default function CryptoWallet({
         value={value}
         name={name}
         required={required}
-        minLength={2}
         onChange={(e) => handleOnChange(e.target.value)}
         className="border rounded w-full py-2 ps-2"
       />

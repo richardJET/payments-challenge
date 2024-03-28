@@ -2,19 +2,22 @@ import paymentPlugins from "./../paymentPlugins.json";
 import { useState, useEffect } from "react";
 import CreditCardNumber from "./form/CreditCardNumber";
 import Text from "./form/Text";
+import TextArea from "./form/TextArea";
+import BankAccountType from "./form/BankAccountType";
 import Email from "./form/Email";
 import Password from "./form/Password";
 import Cvv from "./form/Cvv";
 import CryptoWallet from "./form/CryptoWallet";
 import ExpirationDate from "./form/ExpirationDate";
-import TextArea from "./form/TextArea";
 
-export default function PaymentForm({ paymentMethod, toggleComplete }) {
+export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoading}) {
   const [name, setName] = useState("");
+  const [bankAccountType, setbankAccountType] = useState("Chequing")
   const [creditCardNumber, setCreditCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [email, setEmail] = useState("");
+  const [securityQuestion, setSecurityQuestion] = useState("");
   const [password, setPassword] = useState("");
   const [cryptoAddress, setCryptoAddress] = useState("");
   const [description, setDescription] = useState("");
@@ -26,15 +29,17 @@ export default function PaymentForm({ paymentMethod, toggleComplete }) {
 
     const formData = {};
     if (name) formData.name = name;
+    if (bankAccountType) formData.bankAccountType = bankAccountType;
     if (creditCardNumber) formData.creditCardNumber = creditCardNumber;
     if (expirationDate) formData.expirationDate = expirationDate;
     if (cvv) formData.cvv = cvv;
     if (email) formData.email = email;
+    if (securityQuestion) formData.securityQuestion = securityQuestion;
     if (password) formData.password = password;
     if (cryptoAddress) formData.cryptoAddress = cryptoAddress;
     if (description) formData.description = description;
-
     try {
+      setIsLoading(true);
       const response = await fetch(paymentPlugins[paymentMethod].apiUrl, {
         method: "POST",
         headers: {
@@ -49,10 +54,11 @@ export default function PaymentForm({ paymentMethod, toggleComplete }) {
       }
     } catch (error) {
       console.error("Payment request failed:", error);
+    } finally{ 
+      // since this is a mock payment we will always consider successful
+      clearAllFields();
+      toggleComplete();
     }
-    // since this is a mock payment we will always consider successful
-    clearAllFields();
-    toggleComplete();
   };
 
   const clearAllFields = () => {
@@ -80,12 +86,21 @@ export default function PaymentForm({ paymentMethod, toggleComplete }) {
               Please enter your payment details below.
             </p>
           </div>
-          {fields.name && (
-            <Text
-              fieldDetails={fields.name}
-              value={name}
-              handleOnChange={setName}
-              name="name"
+          
+        {fields.name && (
+          <Text
+            fieldDetails={fields.name}
+            value={name}
+            handleOnChange={setName}
+            name="name"
+          />
+        )}
+
+          {fields.bankAccountType && (
+            <BankAccountType
+              fieldDetails={fields.bankAccountType}
+              handleOnChange={setbankAccountType}
+              name="bankAccountType"
             />
           )}
           {fields.creditCardNumber && (
@@ -116,6 +131,14 @@ export default function PaymentForm({ paymentMethod, toggleComplete }) {
               handleOnChange={setEmail}
             />
           )}
+          {fields.securityQuestion && (
+            <Text
+              fieldDetails={fields.securityQuestion}
+              value={securityQuestion}
+              handleOnChange={setSecurityQuestion}
+              name="securityQuestion"
+            />
+          )}
           {fields.password && (
             <Password
               fieldDetails={fields.password}
@@ -139,6 +162,7 @@ export default function PaymentForm({ paymentMethod, toggleComplete }) {
               name="description"
             />
           )}
+
         </div>
       </div>
       <div className="container flex justify-end my-4">

@@ -2,7 +2,7 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
 export default function ConfirmationPage({ toggleComplete }) {
   return (
-    <>
+    <main className="bg-gray-200 min-h-screen h-full p-4 md:p-8">
       <div className="container rounded bg-white py-24 px-12 md:py-48 md:px-24 mx-auto ">
         <CheckCircleIcon className="text-green-500 w-48 mx-auto" />
         <h2 className="text-3xl font-semibold text-center">
@@ -21,6 +21,6 @@ export default function ConfirmationPage({ toggleComplete }) {
           Back
         </button>
       </div>
-    </>
+    </main>
   );
 }
