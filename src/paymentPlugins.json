@@ -21,7 +21,8 @@
         "icon":{
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2000px-Visa_Inc._logo.svg.png",
             "alt": "Visa Logo"
-        }
+        },
+        "apiUrl": "https://api.visa.com/transaction"
     },
     "Mastercard": {
         "fields": {
@@ -45,7 +46,33 @@
         "icon": {
             "src": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
             "alt": "Mastercard Logo"
-        }
+        },
+        "apiUrl": "https://api.mastercard.com/transaction"
+    },
+    "AmericanExpress": {
+        "fields": {
+            "name": {
+                "label": "Cardholder Name",
+                "required": true
+            },
+            "creditCardNumber": {
+                "label": "Credit Card Number",
+                "required": true
+            },
+            "expirationDate": {
+                "label": "Expiration Date",
+                "required": true
+            },
+            "cvv": {
+                "label": "CVV",
+                "required": true
+            }
+        },
+        "icon": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png",
+            "alt": "American Express Logo"
+        },
+        "apiUrl": "https://api.americanexpress.com/transaction"
     },
     "PayPal": {
         "fields": {
@@ -61,30 +88,41 @@
         "icon":{
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png",
             "alt": "PayPal Logo"
-        }
+        },
+        "apiUrl": "https://api.paypal.com/transaction"
     },
     "Bitcoin": {
         "fields": {
             "cryptoAddress": {
                 "label": "Bitcoin Address",
                 "required": true
+            },
+            "description": {
+                "label": "Description",
+                "required": false
             }
         },
         "icon":{
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/2000px-Bitcoin.svg.png",
             "alt": "Bitcoin Logo"
-        }
+        },
+        "apiUrl": "https://api.bitcoin.com/transaction"
     },
     "Ethereum": {
         "fields": {
             "cryptoAddress": {
                 "label": "Ethereum Address",
                 "required": true
+            },
+            "description": {
+                "label": "Description",
+                "required": false
             }
         },
         "icon":{
             "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png",
             "alt": "Ethereum Logo"
-        }
+        },
+        "apiUrl": "https://api.ethereum.com/transaction"
     }
 }

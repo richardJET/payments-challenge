@@ -17,12 +17,17 @@ export default function PaymentMethodsSelect({
           {Object.keys(paymentPlugins).map((key) => {
             const plugin = paymentPlugins[key];
             return (
-              <li key={key} className="border rounded flex me-2 my-1">
+              <li
+                key={key}
+                className={`border rounded flex me-2 my-1 ${
+                  paymentMethod === key
+                    ? "bg-blue-200 border-blue-400"
+                    : "hover:bg-blue-100"
+                }`}
+              >
                 <button
                   onClick={() => changePaymentMethod(key)}
-                  className={`flex items-center h-full w-full p-2 ${
-                    paymentMethod === key ? "bg-blue-200" : "hover:bg-blue-100"
-                  }`}
+                  className="flex items-center h-full w-full p-2"
                 >
                   {plugin.icon ? (
                     <img

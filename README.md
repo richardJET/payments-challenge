@@ -26,20 +26,22 @@ A conceptual guide on how to add a new payment method plugin.
 
 
 MVP
-Payment form that changes when payment method is selected
+Payment form that changes when payment method is selected (Done)
 Payment Complete Screen changes whole screen
-Border Radius
 Responsive
 ReadME
 Deploy
 Meta
+prettier and consistency and comments
 
-Notes
-Submit disabled until all fields filled
+Extra
 Fade In between component and field changes
 UseMemo caching
 Loading State
-Credit Card
+add credit card image to input
+button tooltip
+Submit disabled until all fields filled
+expiration date
 
 
 

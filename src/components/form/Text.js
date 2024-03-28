@@ -5,8 +5,8 @@ export default function Text({ fieldDetails, value, handleOnChange }) {
       <label className="my-1">{label}</label>
       <input
         type="text"
-        required={required}
         value={value}
+        required={required}
         onChange={(e) => handleOnChange(e.target.value)}
         className="border rounded w-full py-2 ps-2"
       />

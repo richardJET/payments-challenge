@@ -12,6 +12,11 @@ module.exports = {
         "2xl": "640x",
       },
     },
+    extend: {
+      minHeight: {
+        120: "30rem",
+      },
+    },
   },
   plugins: [],
 };
