@@ -1,5 +1,7 @@
 # Payments Challenge
 
+This website is LIVE view it [here](https://payments-challenge.netlify.app/).
+
 ## Objective
 
 Design and implement a user interface for a simplified payment processing application using React. Your UI should be able to conceptually integrate with a mock payment service and include a design for a plugin system that facilitates the easy addition of new payment methods or services.
@@ -40,7 +42,7 @@ To run this application locally, follow these steps:
 
 4. **Start the Development Server**:
     ```npm
-    npm install
+    npm start
 
 ## Project Overview
 

@@ -108,21 +108,29 @@
         },
         "apiUrl": "https://api.bitcoin.com/transaction"
     },
-    "Ethereum": {
+    "Interac": {
         "fields": {
-            "cryptoAddress": {
-                "label": "Ethereum Address",
+            "bankAccountType": {
+                "label": "Bank Account",
                 "required": true
             },
-            "description": {
-                "label": "Description",
-                "required": false
+            "email": {
+                "label": "Send To Email",
+                "required": true
+            },
+            "securityQuestion": {
+                "label": "Security Question",
+                "required": true
+            },
+            "password": {
+                "label": "Security Password",
+                "required": true
             }
         },
         "icon":{
-            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png",
-            "alt": "Ethereum Logo"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/InteracLogo.svg/512px-InteracLogo.svg.png",
+            "alt": "Interac Logo"
         },
-        "apiUrl": "https://api.ethereum.com/transaction"
+        "apiUrl": "https://api.interac.com/transaction"
     }
 }
