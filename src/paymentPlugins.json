@@ -1,0 +1,90 @@
+{
+    "Visa": {
+        "fields":{
+            "name": {
+                "label": "Cardholder Name",
+                "required": true
+            },
+            "creditCardNumber": {
+                "label": "Credit Card Number",
+                "required": true
+            },
+            "expirationDate": {
+                "label": "Expiration Date",
+                "required": true
+            },
+            "cvv": {
+                "label": "CVV",
+                "required": true
+            }
+        },
+        "icon":{
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2000px-Visa_Inc._logo.svg.png",
+            "alt": "Visa Logo"
+        }
+    },
+    "Mastercard": {
+        "fields": {
+            "name": {
+                "label": "Cardholder Name",
+                "required": true
+            },
+            "creditCardNumber": {
+                "label": "Credit Card Number",
+                "required": true
+            },
+            "expirationDate": {
+                "label": "Expiration Date",
+                "required": true
+            },
+            "cvv": {
+                "label": "CVV",
+                "required": true
+            }
+        },
+        "icon": {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
+            "alt": "Mastercard Logo"
+        }
+    },
+    "PayPal": {
+        "fields": {
+            "email": {
+                "label": "Email",
+                "required": true
+            },
+            "password": {
+                "label": "Password",
+                "required": true
+            }
+        },
+        "icon":{
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png",
+            "alt": "PayPal Logo"
+        }
+    },
+    "Bitcoin": {
+        "fields": {
+            "cryptoAddress": {
+                "label": "Bitcoin Address",
+                "required": true
+            }
+        },
+        "icon":{
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/2000px-Bitcoin.svg.png",
+            "alt": "Bitcoin Logo"
+        }
+    },
+    "Ethereum": {
+        "fields": {
+            "cryptoAddress": {
+                "label": "Ethereum Address",
+                "required": true
+            }
+        },
+        "icon":{
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/2000px-Ethereum_logo_2014.svg.png",
+            "alt": "Ethereum Logo"
+        }
+    }
+}
