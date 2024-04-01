@@ -10,9 +10,13 @@ import Cvv from "./form/Cvv";
 import CryptoWallet from "./form/CryptoWallet";
 import ExpirationDate from "./form/ExpirationDate";
 
-export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoading}) {
+export default function PaymentForm({
+  paymentMethod,
+  toggleComplete,
+  setIsLoading,
+}) {
   const [name, setName] = useState("");
-  const [bankAccountType, setbankAccountType] = useState("Chequing")
+  const [bankAccountType, setbankAccountType] = useState("Chequing");
   const [creditCardNumber, setCreditCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -45,7 +49,8 @@ export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoadin
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        // body: JSON.stringify(formData),
+        // this is commented out because we are not actually sending the data to the payment gateway
       });
       if (response.ok) {
         console.log("Payment request successful:", response.statusText);
@@ -54,7 +59,7 @@ export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoadin
       }
     } catch (error) {
       console.error("Payment request failed:", error);
-    } finally{ 
+    } finally {
       // since this is a mock payment we will always consider successful
       clearAllFields();
       toggleComplete();
@@ -83,18 +88,18 @@ export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoadin
           <div className="my-2">
             <h2 className="text-2xl font-semibold my-1">Payment Form</h2>
             <p className="text-gray-600">
-              Please enter your payment details below.
+              Please enter your payment details below. (Note: this is a mock payment form, do not enter real payment details.)
             </p>
           </div>
-          
-        {fields.name && (
-          <Text
-            fieldDetails={fields.name}
-            value={name}
-            handleOnChange={setName}
-            name="name"
-          />
-        )}
+
+          {fields.name && (
+            <Text
+              fieldDetails={fields.name}
+              value={name}
+              handleOnChange={setName}
+              name="name"
+            />
+          )}
 
           {fields.bankAccountType && (
             <BankAccountType
@@ -162,7 +167,6 @@ export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoadin
               name="description"
             />
           )}
-
         </div>
       </div>
       <div className="container flex justify-end my-4">
