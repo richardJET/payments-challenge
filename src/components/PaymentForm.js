@@ -45,7 +45,8 @@ export default function PaymentForm({ paymentMethod, toggleComplete, setIsLoadin
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        // body: JSON.stringify(formData),
+        // this is commented out because we are not actually sending the data to the payment gateway
       });
       if (response.ok) {
         console.log("Payment request successful:", response.statusText);

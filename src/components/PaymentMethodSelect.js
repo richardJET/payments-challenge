@@ -11,6 +11,10 @@ export default function PaymentMethodsSelect({
         <p className="text-gray-600">
           Please select a payment method by clicking on the proper icon below.
         </p>
+        <p className="text-gray-400 text-sm">
+          (Note: this is a mock payment form, do not enter real payment
+          details.)
+        </p>
       </div>
       <ul className="flex flex-wrap">
         {Object.keys(paymentPlugins).map((key) => {
