@@ -1,7 +1,6 @@
 # Payments Challenge
 
 This website is LIVE view it [here](https://payments-challenge.netlify.app/).
-Note: Website is currently blocked on Google Chrome, but can be safely viewed on other browsers.
 
 ## Objective
 
